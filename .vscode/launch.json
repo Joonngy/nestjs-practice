@@ -1,0 +1,43 @@
+// "program": "${workspaceFolder}/01_nest-start/src/main.ts",
+// "outFiles": [
+//     "${workspaceFolder}/**/*.js"
+// ]
+
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "01_nest-start",
+        "nodeVersionHint": 18,
+        "args": [
+          "${workspaceFolder}/01_nest-start/src/main.ts"
+        ],
+        "runtimeArgs": [
+          "--nolazy",
+          "-r",
+          "ts-node/register",
+          "-r",
+          "tsconfig-paths/register"
+        ],
+        "sourceMaps": true,
+        "cwd": "${workspaceRoot}/01_nest-start",
+        "console": "integratedTerminal",
+        "protocol": "inspector"
+      },
+      {
+        "name": "Debug Jest Tests",
+        "type": "node",
+        "request": "launch",
+        "runtimeArgs": [
+          "--inspect-brk",
+          "${workspaceRoot}/node_modules/.bin/jest",
+          "--runInBand",
+          "--coverage",
+          "false"
+        ],
+        "console": "integratedTerminal"
+      }
+    ]
+  }
