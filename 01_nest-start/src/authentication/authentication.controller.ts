@@ -1,4 +1,4 @@
-import { Body, Req, Controller, HttpCode, Post, UseGuards, Res, Get, SerializeOptions } from '@nestjs/common';
+import { Body, Req, Controller, HttpCode, Post, UseGuards, Res, Get, SerializeOptions, UseInterceptors, ClassSerializerInterceptor } from '@nestjs/common';
 import { Response } from 'express';
 import { AuthenticationService } from './authentication.service';
 import RegisterDto from './dto/register.dto';
@@ -7,11 +7,11 @@ import { LocalAuthenticationGuard } from './guard/localAuthentication.guard';
 import { JwtAuthenticationGuard } from './guard/jwt-authentication.guard';
 
 @Controller('authentication')
-@SerializeOptions({
-  strategy: 'excludeAll'
-})
+@UseInterceptors(ClassSerializerInterceptor)
 export class AuthenticationController {
-  constructor(private readonly authenticationService: AuthenticationService) {}
+  constructor(
+    private readonly authenticationService: AuthenticationService,
+  ) {}
 
   @Post('register')
   async register(@Body() registrationData: RegisterDto) {

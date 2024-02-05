@@ -13,24 +13,23 @@ services:
       - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    links:
+      - postgres:postgres
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - '8080:80'
+    volumes:
+      - ./data/pgadmin:/root/.pgadmin
+    env_file:
+      - .env
+    networks:
+      - postgres
 volumes:
   pgdata:
 
-
-#   pgadmin:
-#     links:
-#       - postgres:postgres
-#     container_name: pgadmin
-#     image: dpage/pgadmin4
-#     ports:
-#       - '8080:80'
-#     volumes:
-#       - ./data/pgadmin:/root/.pgadmin
-#     env_file:
-#       - .env
-#     networks:
-#       - postgres
-
-# networks:
-#   postgres:
-#     driver: bridge
+networks:
+  postgres:
+    driver: bridge
