@@ -1,6 +1,6 @@
-import Category from 'src/category/entities/category.entity';
+import Category from '../../category/entities/category.entity';
 import { Transform } from 'class-transformer';
-import User from 'src/users/entities/user.entity';
+import User from '../../users/entities/user.entity';
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

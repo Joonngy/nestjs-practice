@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreatePostDto } from './dto/createPost.dto';
 import { UpdatePostDto } from './dto/updatePost.dto';
 import { Post } from './entities/post.entity';
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 import PostNotFoundException from './exceptions/postNotFound.exception';
 
 @Injectable()
